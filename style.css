@@ -1,0 +1,16 @@
+body {
+    /* Sets the path to your image file */
+    background-image: url('https://media.discordapp.net/attachments/1235414058212003902/1563880545874739211/Pngtreebrown_texture_ripped_paper_lines_13245081.jpg'); 
+    
+    /* Prevents the image from repeating/tiling */
+    background-repeat: no-repeat; 
+    
+    /* Centers the image perfectly in the viewport */
+    background-position: center; 
+    
+    /* Forces the image to scale nicely and cover the entire screen */
+    background-size: cover; 
+    
+    /* Keeps the background fixed in place when scrolling */
+    background-attachment: fixed; 
+}
