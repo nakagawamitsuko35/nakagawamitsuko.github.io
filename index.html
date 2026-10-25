@@ -1,491 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Inter+Tight:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
-    <title>Dashboard · 2026 Redesign Preview</title>
-    <script>
-      (function () {
-        try {
-          var saved = localStorage.getItem('dash26-theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
-        } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'light');
-        }
-      })();
-    </script>
-  </head>
-  <body data-active="dashboard" data-crumbs="Workspace | Dashboard">
-    <div class="shell">
-      <div data-shell-sidebar></div>
-      <div class="main">
-        <div data-shell-topbar></div>
-        <main class="content">
-        <!-- HERO -->
-        <section class="hero">
-          <div class="hero-text">
-            <span class="eyebrow" id="heroDate">Thursday · April 23 · 2026</span>
-            <h1 class="hero-title">Welcome back, <span class="accent">John</span></h1>
-            <p class="hero-sub">Total visits are <strong>+10%</strong> week over week, unique visitors steady, and bounce rate holding at 33%. Two new regions came online overnight.</p>
-          </div>
-          <div class="hero-actions">
-            <button class="btn btn--ghost">
-              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-              Export
-            </button>
-            <button class="btn btn--primary">
-              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-              New report
-            </button>
-          </div>
-        </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Reed — LSPD Field Notes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --paper:#fefdf7;
+      --paper-lines:#e6e2d3;
+      --paper-margin:#f7caca;
+      --ink:#222;
+      --accent:#2b6cb0;
+      --tape:#f6e7a7;
+      --sticky:#fff2a8;
+      --sticky-2:#cfe7ff;
+      --ring:#b8c4cc;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0; 
+      background: linear-gradient(180deg,#eceff3, #dde3ea);
+      font-family:'Patrick Hand', 'Special Elite', ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--ink);
+    }
 
-        <!-- KPI CARDS — Total Visits / Page Views / Unique Visitors / Bounce Rate -->
-        <section class="kpi-grid" aria-label="Key metrics">
-          <article class="kpi-card c-success">
-            <div class="kpi-top">
-              <div class="kpi-identity">
-                <div class="kpi-icon success">
-                  <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                </div>
-                <div class="kpi-label">Total visits</div>
-              </div>
-              <span class="kpi-pill up">
-                <svg viewBox="0 0 24 24"><path d="M7 17l10-10M7 7h10v10"/></svg>
-                +10%
-              </span>
-            </div>
-            <div class="kpi-value">1.24<sup>M</sup></div>
-            <div class="kpi-compare">
-              <svg class="up" viewBox="0 0 24 24"><path d="M7 17l10-10M7 7h10v10"/></svg>
-              up from <strong>1.12M</strong> <span class="sep">·</span> last week
-            </div>
-          </article>
+    /* Notebook page */
+    .page{
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 44px 28px 64px 64px;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          var(--paper) 0 28px,
+          var(--paper-lines) 28px 29px
+        );
+      box-shadow: 0 20px 40px rgba(0,0,0,.15);
+      border-radius: 18px;
+      position: relative;
+    }
+    /* red margin line */
+    .page:before{
+      content:""; position:absolute; left:48px; top:0; bottom:0; width:2px; background:var(--paper-margin);
+    }
+    /* binder rings */
+    .rings{
+      position:absolute; left:12px; top:36px; bottom:36px; width:24px; display:flex; flex-direction:column; justify-content:space-between; pointer-events:none;
+    }
+    .ring{ width:24px; height:24px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #fff, var(--ring)); box-shadow: inset 2px 2px 6px rgba(0,0,0,.15); }
 
-          <article class="kpi-card c-danger">
-            <div class="kpi-top">
-              <div class="kpi-identity">
-                <div class="kpi-icon danger">
-                  <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg>
-                </div>
-                <div class="kpi-label">Page views</div>
-              </div>
-              <span class="kpi-pill down">
-                <svg viewBox="0 0 24 24"><path d="M7 7l10 10M7 17h10V7"/></svg>
-                −7%
-              </span>
-            </div>
-            <div class="kpi-value">4.08<sup>M</sup></div>
-            <div class="kpi-compare">
-              <svg class="down" viewBox="0 0 24 24"><path d="M7 7l10 10M7 17h10V7"/></svg>
-              down from <strong>4.39M</strong> <span class="sep">·</span> last week
-            </div>
-          </article>
+    header{
+      display:flex; align-items:center; gap:16px; margin-bottom: 12px;
+    }
+    .title{
+      font-size: 2.1rem; line-height:1.1; font-weight:700; letter-spacing:.5px;
+    }
+    .subtitle{ font-family:'Special Elite', monospace; font-size: .98rem; opacity:.75; }
 
-          <article class="kpi-card c-purple">
-            <div class="kpi-top">
-              <div class="kpi-identity">
-                <div class="kpi-icon purple">
-                  <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-                </div>
-                <div class="kpi-label">Unique visitors</div>
-              </div>
-              <span class="kpi-pill flat">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
-                ~12%
-              </span>
-            </div>
-            <div class="kpi-value">842<sup>K</sup></div>
-            <div class="kpi-compare">
-              <svg class="flat" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
-              holding around <strong>835K</strong> <span class="sep">·</span> last week
-            </div>
-          </article>
+    /* toolbar */
+    .toolbar{
+      display:flex; gap:8px; flex-wrap:wrap; margin: 10px 0 22px; align-items:center;
+    }
+    .btn{
+      appearance:none; border:none; padding:10px 14px; border-radius:10px; background:#ffffffbb; box-shadow: 0 4px 0 #cfd8e3, 0 8px 18px rgba(0,0,0,.08);
+      font-family:inherit; cursor:pointer; font-size:1rem; transform:translateY(0); transition:.15s;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(2px); box-shadow: 0 2px 0 #cfd8e3, 0 4px 10px rgba(0,0,0,.06); }
 
-          <article class="kpi-card c-primary">
-            <div class="kpi-top">
-              <div class="kpi-identity">
-                <div class="kpi-icon primary">
-                  <svg viewBox="0 0 24 24"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-                </div>
-                <div class="kpi-label">Bounce rate</div>
-              </div>
-              <span class="kpi-pill info">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
-                steady
-              </span>
-            </div>
-            <div class="kpi-value">33<sup>%</sup></div>
-            <div class="kpi-compare">
-              <svg class="info" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
-              matching <strong>33%</strong> <span class="sep">·</span> last week
-            </div>
-          </article>
-        </section>
+    /* sections */
+    section{ margin: 18px 0 26px; }
+    h2{
+      display:inline-block; margin:0 0 8px; padding: 6px 10px; border-radius:10px; background: #ffffffc9; border:1px dashed #9aa6b2; font-size:1.35rem;
+    }
+    p, li{ font-size:1.05rem; }
 
-        <!-- ============ PANEL GRID ============ -->
-        <div class="grid">
+    /* code lists */
+    .codes{ columns: 2; column-gap: 28px; }
+    .codes li{ break-inside: avoid; margin: 2px 0; }
 
-          <!-- SITE VISITS — redesigned: 4 region stats + 3 radial KPIs, no fake map -->
-          <section class="col-12 card">
-            <div class="card-head">
-              <div class="card-title-wrap">
-                <span class="eyebrow">Geography</span>
-                <h2 class="card-title">Site visits</h2>
-              </div>
-              <a class="card-action" href="#">
-                View report
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
-            </div>
+    /* sticky note blocks */
+    .sticky{
+      background:var(--sticky); padding:14px 16px; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,.12);
+      transform: rotate(-1.2deg); width:fit-content; max-width: 640px; border:1px solid #e6d98a; position:relative; margin: 8px 0 16px 0;
+    }
+    .sticky:before{
+      content:""; position:absolute; top:-10px; left:22px; width:70px; height:24px; background: var(--tape); transform: rotate(-4deg); box-shadow: 0 6px 10px rgba(0,0,0,.12);
+    }
 
-            <!-- Regional breakdown -->
-            <div class="sv-regions">
-              <div class="sv-region">
-                <div class="sv-region-head">
-                  <span class="marker" style="background: var(--purple);"></span>
-                  United States
-                </div>
-                <div class="sv-region-value">100K<span class="pct">50%</span></div>
-                <div class="sv-region-bar"><div class="sv-region-bar-fill" style="width: 50%; background: var(--purple);"></div></div>
-              </div>
-              <div class="sv-region">
-                <div class="sv-region-head">
-                  <span class="marker" style="background: var(--success);"></span>
-                  Europe
-                </div>
-                <div class="sv-region-value">1M<span class="pct">80%</span></div>
-                <div class="sv-region-bar"><div class="sv-region-bar-fill" style="width: 80%; background: var(--success);"></div></div>
-              </div>
-              <div class="sv-region">
-                <div class="sv-region-head">
-                  <span class="marker" style="background: var(--info);"></span>
-                  Australia
-                </div>
-                <div class="sv-region-value">450K<span class="pct">40%</span></div>
-                <div class="sv-region-bar"><div class="sv-region-bar-fill" style="width: 40%; background: var(--info);"></div></div>
-              </div>
-              <div class="sv-region">
-                <div class="sv-region-head">
-                  <span class="marker" style="background: #64748B;"></span>
-                  India
-                </div>
-                <div class="sv-region-value">1B<span class="pct">90%</span></div>
-                <div class="sv-region-bar"><div class="sv-region-bar-fill" style="width: 90%; background: #64748B;"></div></div>
-              </div>
-            </div>
+    .sticky.blue{ background: var(--sticky-2); border-color:#a7c8ee; transform: rotate(1.1deg); }
 
-            <div class="sv-divider"></div>
+    /* callout */
+    .callout{
+      border-left: 4px solid var(--accent); padding: 8px 14px; background: #ffffffb5; border-radius: 8px; margin: 10px 0; 
+    }
 
-            <!-- 3 radial KPIs: New Users 75% (red) / New Purchases 50% (blue) / Bounce Rate 90% (orange) -->
-            <div class="sv-radials">
-              <div class="sv-radial">
-                <div class="sv-radial-chart">
-                  <svg viewBox="0 0 80 80">
-                    <circle class="radial-track" cx="40" cy="40" r="32"/>
-                    <circle class="radial-fill danger" cx="40" cy="40" r="32"
-                      stroke-dasharray="201.06" stroke-dashoffset="50.27"/>
-                  </svg>
-                  <span class="pct">75%</span>
-                </div>
-                <div class="sv-radial-text">
-                  <div class="sv-radial-name">New users</div>
-                  <div class="sv-radial-caption">first-time visitors</div>
-                </div>
-              </div>
-              <div class="sv-radial">
-                <div class="sv-radial-chart">
-                  <svg viewBox="0 0 80 80">
-                    <circle class="radial-track" cx="40" cy="40" r="32"/>
-                    <circle class="radial-fill info" cx="40" cy="40" r="32"
-                      stroke-dasharray="201.06" stroke-dashoffset="100.53"/>
-                  </svg>
-                  <span class="pct">50%</span>
-                </div>
-                <div class="sv-radial-text">
-                  <div class="sv-radial-name">New purchases</div>
-                  <div class="sv-radial-caption">from new visits</div>
-                </div>
-              </div>
-              <div class="sv-radial">
-                <div class="sv-radial-chart">
-                  <svg viewBox="0 0 80 80">
-                    <circle class="radial-track" cx="40" cy="40" r="32"/>
-                    <circle class="radial-fill warning" cx="40" cy="40" r="32"
-                      stroke-dasharray="201.06" stroke-dashoffset="20.11"/>
-                  </svg>
-                  <span class="pct">90%</span>
-                </div>
-                <div class="sv-radial-text">
-                  <div class="sv-radial-name">Bounce rate</div>
-                  <div class="sv-radial-caption">avg engagement</div>
-                </div>
-              </div>
-            </div>
-          </section>
+    /* example blocks */
+    .example{ background:#fff; border:1px dashed #9aa6b2; padding:10px 12px; border-radius:10px; margin:6px 0; }
+    .mono{ font-family:"Special Elite", monospace; letter-spacing:.3px; }
 
-          <!-- MONTHLY STATS -->
-          <section class="col-6 card">
-            <div class="card-head">
-              <div class="card-title-wrap">
-                <span class="eyebrow">Performance</span>
-                <h2 class="card-title">Monthly stats</h2>
-              </div>
-              <span class="card-action">April 2026</span>
-            </div>
+    /* footer */
+    footer{ margin-top:34px; font-size:.95rem; opacity:.7; text-align:center; }
 
-            <div class="chart-canvas-wrap" style="height: 240px;">
-              <canvas data-chart-key="dashboard-monthly"></canvas>
-            </div>
+    /* print */
+    @media print{
+      body{ background:white; }
+      .page{ box-shadow:none; }
+      .toolbar{ display:none; }
+      .codes{ columns: 3; }
 
-            <div class="monthly-footer">
-              <div class="stat-cell">
-                <div class="stat-cell-label">Sales growth</div>
-                <div class="stat-cell-value">54%
-                  <svg class="trend-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l10-10M7 7h10v10"/></svg>
-                </div>
-              </div>
-              <div class="stat-cell">
-                <div class="stat-cell-label">Dec sales</div>
-                <div class="stat-cell-value">$185K
-                  <svg class="trend-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l10-10M7 7h10v10"/></svg>
-                </div>
-              </div>
-              <div class="stat-cell">
-                <div class="stat-cell-label">Profit growth</div>
-                <div class="stat-cell-value">60%
-                  <svg class="trend-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l10-10M7 7h10v10"/></svg>
-                </div>
-              </div>
-              <div class="stat-cell">
-                <div class="stat-cell-label">Dec profit</div>
-                <div class="stat-cell-value">$72K
-                  <svg class="trend-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l10-10M7 7h10v10"/></svg>
-                </div>
-              </div>
-            </div>
-          </section>
+    }
+  </style>
 
-          <!-- TODO LIST -->
-          <section class="col-6 card">
-            <div class="card-head">
-              <div class="card-title-wrap">
-                <span class="eyebrow">Personal</span>
-                <h2 class="card-title">Todo list</h2>
-              </div>
-              <a class="card-action" href="#">
-                Add task
-                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-              </a>
-            </div>
-            <ul class="todo-list">
-              <li class="todo-item">
-                <input type="checkbox" class="todo-check" id="td1">
-                <label for="td1" class="todo-text">Call John for dinner</label>
-                <span class="todo-badge low">ANYTIME</span>
-              </li>
-              <li class="todo-item">
-                <input type="checkbox" class="todo-check" id="td2">
-                <label for="td2" class="todo-text">Book boss flight</label>
-                <span class="todo-badge upcoming">2 DAYS</span>
-              </li>
-              <li class="todo-item">
-                <input type="checkbox" class="todo-check" id="td3">
-                <label for="td3" class="todo-text">Hit the gym</label>
-                <span class="todo-badge urgent">3 MIN</span>
-              </li>
-              <li class="todo-item">
-                <input type="checkbox" class="todo-check" id="td4">
-                <label for="td4" class="todo-text">Give purchase report</label>
-                <span class="todo-badge warn">LOW PRIORITY</span>
-              </li>
-              <li class="todo-item">
-                <input type="checkbox" class="todo-check" id="td5">
-                <label for="td5" class="todo-text">Watch Foundation S03E04</label>
-                <span class="todo-badge upcoming">TOMORROW</span>
-              </li>
-              <li class="todo-item is-done">
-                <input type="checkbox" class="todo-check" id="td6" checked>
-                <label for="td6" class="todo-text">Give purchase report</label>
-                <span class="todo-badge done">DONE</span>
-              </li>
-            </ul>
-          </section>
+  <style>
+    .quote-section {
+      background: linear-gradient(135deg, #1f1f1f, #2e2e2e);
+      color: #f1f1f1;
+      padding: 30px 50px;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-          <!-- SALES REPORT -->
-          <section class="col-6 card">
-            <div class="card-head">
-              <div class="card-title-wrap">
-                <span class="eyebrow">Commerce</span>
-                <h2 class="card-title">Sales report</h2>
-              </div>
-            </div>
+    .quote-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      border-left: 5px solid #ffcc00;
+      border-right: 5px solid #ffcc00;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+    }
 
-            <div class="sales-summary">
-              <div class="sales-summary-label">
-                <span class="eyebrow">Period</span>
-                <h4>April 2026</h4>
-              </div>
-              <div class="sales-summary-total"><sup>$</sup>6,000</div>
-            </div>
+    .quote-text {
+      font-size: 1.4rem;
+      font-style: sans-serif;
+      line-height: 1.6;
+    }
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Status</th>
-                  <th>Date</th>
-                  <th style="text-align:right">Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="cell-name">Item #1</td><td><span class="tag t-unavail">Unavailable</span></td><td class="cell-date">Apr 18</td><td class="cell-price pos">$12</td></tr>
-                <tr><td class="cell-name">Item #2</td><td><span class="tag t-new">New</span></td><td class="cell-date">Apr 19</td><td class="cell-price pos">$34</td></tr>
-                <tr><td class="cell-name">Item #3</td><td><span class="tag t-new">New</span></td><td class="cell-date">Apr 20</td><td class="cell-price neg">−$45</td></tr>
-                <tr><td class="cell-name">Item #4</td><td><span class="tag t-unavail">Unavailable</span></td><td class="cell-date">Apr 21</td><td class="cell-price pos">$65</td></tr>
-                <tr><td class="cell-name">Item #5</td><td><span class="tag t-used">Used</span></td><td class="cell-date">Apr 22</td><td class="cell-price pos">$78</td></tr>
-                <tr><td class="cell-name">Item #6</td><td><span class="tag t-used">Used</span></td><td class="cell-date">Apr 23</td><td class="cell-price neg">−$88</td></tr>
-                <tr><td class="cell-name">Item #7</td><td><span class="tag t-old">Old</span></td><td class="cell-date">Apr 22</td><td class="cell-price pos">$56</td></tr>
-              </tbody>
-            </table>
+    .quote-author {
+      margin-top: 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffcc00;
+    }
 
-            <div class="sales-all">
-              <a href="#">Check all sales <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-            </div>
-          </section>
+    /* Responsif */
+    @media (max-width: 600px) {
+      .quote-text {
+        font-size: 1rem;
+      }
+      .quote-author {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 
-          <!-- WEATHER -->
-          <section class="col-6 card">
-            <div class="card-head">
-              <div class="card-title-wrap">
-                <span class="eyebrow">Today</span>
-                <h2 class="card-title">Weather</h2>
-              </div>
-              <span class="card-action">Rīga, LV</span>
-            </div>
-
-            <div class="wx-hero">
-              <div class="wx-temp-block">
-                <div class="wx-icon">
-                  <svg viewBox="0 0 64 64">
-                    <circle cx="22" cy="22" r="8"/>
-                    <path d="M22 6v4M22 34v4M6 22h4M34 22h4M10 10l3 3M31 31l3 3M34 10l-3 3M13 31l-3 3"/>
-                    <path d="M18 44a10 10 0 0 1 10-10 10 10 0 0 1 9.5 7 8 8 0 0 1-1.5 16H20a8 8 0 0 1-2-13z"/>
-                  </svg>
-                </div>
-                <div>
-                  <div class="wx-temp">32<sup>°F</sup></div>
-                  <div class="wx-condition">Partly <strong>cloudy</strong> · light breeze</div>
-                </div>
-              </div>
-              <div class="wx-date">
-                <h5>Thursday</h5>
-                <p>APR 23, 2026</p>
-              </div>
-            </div>
-
-            <div class="wx-stats">
-              <div>
-                <div class="wx-stat-label">Wind</div>
-                <div class="wx-stat-value">10<span class="unit">km/h</span></div>
-              </div>
-              <div>
-                <div class="wx-stat-label">Sunrise</div>
-                <div class="wx-stat-value">05:32<span class="unit">am</span></div>
-              </div>
-              <div>
-                <div class="wx-stat-label">Pressure</div>
-                <div class="wx-stat-value">1013<span class="unit">hPa</span></div>
-              </div>
-            </div>
-
-            <div class="wx-forecast">
-              <div class="wx-day is-today">
-                <div class="wx-day-name">THU</div>
-                <div class="wx-day-icon"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 20 11.5 4.5 4.5 0 0 1 19 20.5"/></svg></div>
-                <div class="wx-day-temp">32°</div>
-              </div>
-              <div class="wx-day">
-                <div class="wx-day-name">FRI</div>
-                <div class="wx-day-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></div>
-                <div class="wx-day-temp">30°</div>
-              </div>
-              <div class="wx-day">
-                <div class="wx-day-name">SAT</div>
-                <div class="wx-day-icon"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 20 11.5 4.5 4.5 0 0 1 19 20.5"/></svg></div>
-                <div class="wx-day-temp">28°</div>
-              </div>
-              <div class="wx-day">
-                <div class="wx-day-name">SUN</div>
-                <div class="wx-day-icon"><svg viewBox="0 0 24 24"><path d="M18 10a6 6 0 0 0-12 0 5 5 0 0 0 0 10h12a5 5 0 0 0 0-10"/></svg></div>
-                <div class="wx-day-temp">32°</div>
-              </div>
-              <div class="wx-day">
-                <div class="wx-day-name">MON</div>
-                <div class="wx-day-icon"><svg viewBox="0 0 24 24"><path d="M8 19v-9M8 14l3 3M8 14l-3 3M16 19v-9M16 14l3 3M16 14l-3 3M20 6a6 6 0 0 0-12 0 5 5 0 0 0 0 10"/></svg></div>
-                <div class="wx-day-temp">24°</div>
-              </div>
-              <div class="wx-day">
-                <div class="wx-day-name">TUE</div>
-                <div class="wx-day-icon"><svg viewBox="0 0 24 24"><path d="M17.7 7.7a6 6 0 1 0-9.1 7.3M3 12h4M15 8h5M18 16h-6M9.5 20h7"/></svg></div>
-                <div class="wx-day-temp">28°</div>
-              </div>
-              <div class="wx-day">
-                <div class="wx-day-name">WED</div>
-                <div class="wx-day-icon"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 20 11.5 4.5 4.5 0 0 1 19 20.5"/></svg></div>
-                <div class="wx-day-temp">32°</div>
-              </div>
-            </div>
-          </section>
-
-          <!-- QUICK CHAT — full-width to avoid orphan half-column -->
-          <section class="col-12 card">
-            <div class="card-head">
-              <div class="card-title-wrap">
-                <span class="eyebrow">Conversations</span>
-                <h2 class="card-title">Quick chat</h2>
-              </div>
-              <a class="card-action" href="#">
-                Open chat
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-
-            <div class="chat-frame">
-              <div class="chat-messages">
-                <div class="chat-row">
-                  <div class="chat-avatar">LK</div>
-                  <div class="chat-stack">
-                    <div class="chat-bubble">Morning — just pushed the dependency bump to master.</div>
-                    <div class="chat-bubble">All 10 stale Dependabot PRs are closed 🎉</div>
-                    <div class="chat-ts">10:04 AM</div>
-                  </div>
-                </div>
-                <div class="chat-row me">
-                  <div class="chat-avatar me">JD</div>
-                  <div class="chat-stack">
-                    <div class="chat-bubble">Nice work. Any breaking changes?</div>
-                    <div class="chat-ts">10:06 AM</div>
-                  </div>
-                </div>
-              </div>
-              <div class="chat-input-row">
-                <input class="chat-input" type="text" placeholder="Reply to Leo…">
-                <button class="chat-send" aria-label="Send">
-                  <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
-                </button>
-              </div>
-            </div>
-          </section>
-
-        </div>
-        </main>
-        <div data-shell-footer></div>
-      </div>
+</head>
+<body>
+  <div class="page" id="page">
+    <div class="rings" aria-hidden="true">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
     </div>
-  </body>
+
+    <header>
+      <div>
+        <div class="title">David Reed — LSPD Field Notes</div>
+        <div class="subtitle">“If it’s not written, it didn’t happen.” - David Reed Officer ter NPD, Pickme, Redflag, gaslighter, bipolar, manipulatif, ocd dan masih banyak kelebihan lainnya </div>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+      <button class="btn" onclick="toggleLines()">📄 Toggle Lines</button>
+      <button class="btn" onclick="toggleFont()">✍️ Toggle Handwriting</button>
+    </div>
+
+    <!-- Miranda Rights -->
+    <section>
+      <h2>Miranda Rights</h2>
+      <div class="sticky">
+        <p>Upon arrest, suspects must be read their Miranda Rights to ensure legality of custody and protect constitutional rights:</p>
+        <p class="mono"><em>"You have the right to remain silent. Anything you say can and will be used against you in the court of law. You have the right to an attorney. If you cannot afford one, one will be provided for you."</em></p>
+      </div>
+    </section>
+
+
+    <!-- Ten Codes -->
+    <section>
+      <h2>Ten Codes</h2>
+      <ul class="codes">
+        <li>➢ <b>10-1</b>: Meet me at __</li>
+        <li>➢ <b>10-2</b>: Good signal</li>
+        <li>➢ <b>10-3</b>: Stop Transmitting</li>
+        <li>➢ <b>10-4</b>: Roger That (OK)</li>
+        <li>➢ <b>10-7</b>: Out of Service</li>
+        <li>➢ <b>10-8</b>: In Service</li>
+        <li>➢ <b>10-9</b>: Repeat</li>
+        <li>➢ <b>10-10</b>: Fight in Progress</li>
+        <li>➢ <b>10-12</b>: Standby</li>
+        <li>➢ <b>10-13A</b>: Officer Down (Emergency)</li>
+        <li>➢ <b>10-13B</b>: Officer Down (Non-Emergency)</li>
+        <li>➢ <b>10-14</b>: EMS Down</li>
+        <li>➢ <b>10-18</b>: Quickly</li>
+        <li>➢ <b>10-20</b>: Location</li>
+        <li>➢ <b>10-22</b>: Cancel</li>
+        <li>➢ <b>10-23</b>: Arriving on location …</li>
+        <li>➢ <b>10-28</b>: Info Plate</li>
+        <li>➢ <b>10-29</b>: Checking Criminal Records</li>
+        <li>➢ <b>10-31A</b>: Crime in progress (House Robbery)</li>
+        <li>➢ <b>10-31B</b>: Crime in progress (Store Robbery)</li>
+        <li>➢ <b>10-32</b>: Man with Firearms</li>
+        <li>➢ <b>10-34</b>: Suspicious Behaviour (Narcotics)</li>
+        <li>➢ <b>10-37</b>: Suspicious Vehicle (Investigation)</li>
+        <li>➢ <b>10-38</b>: Stopping Suspicious Vehicle (Felony)</li>
+        <li>➢ <b>10-41</b>: On Duty</li>
+        <li>➢ <b>10-42</b>: Off Duty</li>
+        <li>➢ <b>10-45</b>: Illegal Hunting</li>
+        <li>➢ <b>10-47</b>: Injured Person</li>
+        <li>➢ <b>10-50</b>: Accident</li>
+        <li>➢ <b>10-52</b>: EMS Needed</li>
+        <li>➢ <b>10-55</b>: Traffic Stop</li>
+        <li>➢ <b>10-57</b>: Chase in Progress</li>
+        <li>➢ <b>10-60</b>: Vehicle Description</li>
+        <li>➢ <b>10-61</b>: Suspect Description</li>
+        <li>➢ <b>10-70</b>: Fire in Progress</li>
+        <li>➢ <b>10-71</b>: Shots Fired</li>
+        <li>➢ <b>10-74</b>: Negative</li>
+        <li>➢ <b>10-76</b>: En Route __</li>
+        <li>➢ <b>10-77</b>: Need Assistance (Not Emergency)</li>
+        <li>➢ <b>10-78</b>: Need Assistance (Emergency)</li>
+        <li>➢ <b>10-80</b>: Officer in Danger, can't respond</li>
+        <li>➢ <b>10-89</b>: Bomb Threat</li>
+        <li>➢ <b>10-90</b>: Robbery in Progress (Bank/Jewel)</li>
+        <li>➢ <b>10-94</b>: Drag Racing in Progress</li>
+        <li>➢ <b>10-95</b>: Prisoner / Subject in Custody</li>
+        <li>➢ <b>10-97</b>: Unauthorized access</li>
+        <li>➢ <b>10-98</b>: Jailbreak</li>
+        <li>➢ <b>10-99</b>: Clearing off</li>
+      </ul>
+    </section>
+
+    <!-- Response Codes -->
+    <section>
+      <h2>Response Codes</h2>
+      <ul>
+        <li>➢ <b>Code 1</b> — Non-emergency response — no sirens and no lights.</li>
+        <li>➢ <b>Code 2</b> — Emergency response — <em>lights only</em>, no sirens.</li>
+        <li>➢ <b>Code 3</b> — Emergency response — sirens and lights.</li>
+        <li>➢ <b>Code 4</b> — Situation under control, no further assistance needed.</li>
+        <li>➢ <b>Code 5</b> — Detective under investigation.</li>
+        <li>➢ <b>Code 6</b> — Out from vehicle, investigating the scene on foot.</li>
+        <li>➢ <b>Code 7</b> — Meal Break.</li>
+      </ul>
+    </section>
+
+    <!-- Radio Reporting How-To -->
+    <section>
+      <h2>How to Use 10-Codes / Response Codes on Radio</h2>
+      <div class="callout">
+        <strong>Initial Reporting — Contoh:</strong>
+        <div class="example mono">"Dispatch, Adam-20 would be doing 10-55 situation on [nama jalan], 10-60 gonna be [deskripsi kendaraan] with [jumlah penumpang] occupants inside. Standby for future updates."</div>
+      </div>
+      <div class="callout">
+        <strong>Updating the Situation — Contoh:</strong>
+        <div class="example mono">"Dispatch, for the last 10-55 situation on [nama jalan], it's now changing into active 10-57 (pursuit). Requesting 10-78 (backup) on my 20 (location). Suspect is now heading [arah pelarian]."</div>
+        <div class="example mono">Detail: "Suspect is now heading West on Vespucci Blvd, taking left on intersection, heading South on San Andreas Ave."</div>
+      </div>
+      <div class="sticky blue">
+        <strong>Update structure, David Reed's preference:</strong>
+        <ul>
+          <li><b>Action (Tindakan)</b> — contoh: heading / belok kiri</li>
+          <li><b>Arah mata angin</b> — North / South / East / West</li>
+          <li><b>Nama jalan</b> — lokasi atau jalur</li>
+          <li><b>Informasi tambahan (opsional)</b> — landmark, lalu lintas, deskripsi suspect</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Callsign System -->
+    <section>
+      <h2>Callsign System</h2>
+      <ul class="codes">
+        <li>➢ High Command = <b>STAFF</b></li>
+        <li>➢ Command = <b>VICTOR</b></li>
+        <li>➢ SPV - NCO (Partner) = <b>ADAM</b></li>
+        <li>➢ SPV - NCO (Solo) = <b>LINCOLN</b></li>
+        <li>➢ Interceptor = <b>HENRY</b></li>
+        <li>➢ Interceptor HC = <b>GOLF</b></li>
+        <li>➢ Motorcycle = <b>MARY</b></li>
+        <li>➢ Metro = <b>DAVID</b></li>
+        <li>➢ Bearcat = <b>BEAST</b></li>
+        <li>➢ K9 Unit = <b>NORA</b></li>
+        <li>➢ ASD = <b>AIR</b></li>
+        <li>➢ ASD High Command = <b>AIR-STAFF</b></li>
+        <li>➢ Detective = <b>GEORGE</b></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How to Use Callsign</h2>
+      <p class="example">Let's say David Reed's <b>badge number</b> is <b>7472</b>.</p>
+      <ul>
+        <li><b>Solo (LINCOLN)</b> — <span class="mono">71-Lincoln-72</span> <br><small>Using <b>71</b> as the station callsign (per SPV note).</small></li>
+        <li><b>With Partner (ADAM)</b> — <span class="mono">71-Adam-72</span></li>
+      </ul>
+    </section>
+
+    <section class="p-6 max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold mb-4">Pursuit Behavior</h2>
+      
+      <h3 class="text-xl font-semibold mt-4">Unit Roles</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Primary Unit</strong> — Mobil utama yang akan mengejar.</li>
+        <li><strong>Secondary Unit</strong> — Membantu komunikasi dan call-out.</li>
+        <li><strong>Alternate Unit</strong> — Siap untuk block road atau deploy spike strip.</li>
+      </ul>
+    
+      <h3 class="text-xl font-semibold mt-6">Selama Pengejaran</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li>Memberikan update berkala (arah, kecepatan, situasi lalu lintas).</li>
+        <li>Menjaga jarak aman dan tidak saling menabrak.</li>
+      </ul>
+    
+      <h3 class="text-xl font-semibold mt-6">Taktik Khusus</h3>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Spike Strip</strong></li>
+        <li><strong>PIT Maneuver</strong></li>
+        <li><strong>Box Car</strong></li>
+      </ul>
+      <p class="mt-2 text-gray-700">
+        Hanya boleh dilakukan dengan izin dari <strong>IC</strong> atau <strong>Sergeant</strong>.
+      </p>
+    </section>
+    <section id="ic-guidelines" class="p-6 bg-gray-50 rounded-2xl shadow-md mt-6">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">Menjadi IC yang Baik dan Benar</h2>
+      <p class="mb-4 text-gray-700">
+        Menurut <strong>David</strong>, sebagai Incident Commander (IC) hal yang terpenting adalah <strong>tegas</strong>. 
+        IC diberikan kewenangan tertinggi dalam suatu insiden, sehingga segala hal yang terjadi harus dalam sepersetujuan IC.
+      </p>
+    
+      <h3 class="text-xl font-semibold mt-4 mb-2 text-gray-800">Tanggung Jawab IC di Crime Scene</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Wajib <strong>double check</strong> apakah seluruh evidence telah terkumpul (crime scene evidence, run plate, dsb).</li>
+        <li>Menentukan <strong>pursuit line up</strong>: siapa yang akan menjadi primary, secondary, alternate, dan juga securing hostage.</li>
+        <li>Tidak perlu kaku dalam memilih unit, pilih sesuai kemampuan kendaraan masing-masing officer, bukan pangkat.</li>
+      </ul>
+    
+      <h3 class="text-xl font-semibold mt-4 mb-2 text-gray-800">Selama Pengejaran</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Sigap atas segala perubahan dan tindakan suspect.</li>
+        <li>Jika tindakan suspect membahayakan warga, IC harus memperhitungkan penggunaan <strong>spike trap</strong> atau <strong>PIT maneuver</strong>.</li>
+        <li><strong>Take tire</strong> hanya dilakukan jika situasi sudah tidak kondusif.</li>
+      </ul>
+    
+      <h3 class="text-xl font-semibold mt-4 mb-2 text-gray-800">Komunikasi</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Jangan takut menegur unit yang melakukan kesalahan.</li>
+        <li>Jika ada officer yang menginterupsi radio dengan informasi tidak bermanfaat, IC harus tegas mengatakan <strong>“10-3”</strong>.</li>
+      </ul>
+    
+      <h3 class="text-xl font-semibold mt-4 mb-2 text-gray-800">Setelah Situasi Terkendali</h3>
+      <ul class="list-disc list-inside text-gray-700 space-y-2">
+        <li>Pastikan semua suspect diproses sesuai prosedur.</li>
+        <li>Pastikan MDT (Mobile Data Terminal) diselesaikan dengan rapi dan lengkap.</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Quote</h2>
+      <div class="sticky">
+        <p>"Seorang IC harus tegas, sigap, menguasai situasi, berani mengambil keputusan, dan tidak takut menegur. IC bukan sekadar <em>Role</em>, tapi tanggung jawab penuh atas jalannya sebuah insiden." -David Reed</p>
+      </div>
+    </section>
+
+    <footer>
+      Scribbled by Officer David Reed • Calon Detective terbaik didunia • <span style="font-family:'Special Elite'">v1.0</span>
+    </footer>
+  </div>
+
+  <script>
+    const page = document.getElementById('page');
+    let lined = true;
+    function toggleLines(){
+      if(lined){
+        page.style.background = 'var(--paper)';
+      } else {
+        page.style.background = `repeating-linear-gradient(to bottom, var(--paper) 0 28px, var(--paper-lines) 28px 29px)`;
+      }
+      lined = !lined;
+    }
+    let handwriting = true;
+    function toggleFont(){
+      if(handwriting){
+        document.body.style.fontFamily = 'Special Elite, ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+      } else {
+        document.body.style.fontFamily = 'Patrick Hand, Special Elite, ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, sans-serif';
+      }
+      handwriting = !handwriting;
+    }
+  </script>
+</body>
 </html>
