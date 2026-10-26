@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,11 +21,10 @@
 
         body {
             font-family: 'Caveat', cursive;
-            line-height: 1.4;
+            line-height: 1.5;
             font-weight: bold;
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.5;
             margin: 0;
             padding: 0;
         }
@@ -36,6 +35,7 @@
             padding: 20px;
         }
 
+        /* Header */
         header {
             text-align: center;
             background: linear-gradient(
@@ -50,7 +50,7 @@
         }
 
         header h1 {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             margin: 0;
             font-size: 2.5rem;
             letter-spacing: 1px;
@@ -62,6 +62,7 @@
             opacity: 0.9;
         }
 
+        /* Main Card */
         .card {
             background: var(--card-bg);
             padding: 30px;
@@ -70,27 +71,30 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
-        /* Sticky note container */
+        /* Sticky Note + Radio Ethics */
         .radio-ethics-title {
             position: relative;
             width: 300px;
+            max-width: 100%;
             height: 100px;
             margin-top: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+
+            /* Rotate image and title together */
+            transform: rotate(-10deg);
+            transform-origin: center center;
         }
 
-        /* Sticky note image behind the title */
         .radio-ethics-title img {
             position: absolute;
             top: 0;
             left: 0;
-            width: 300px;
-            height: 100px;
+            width: 100%;
+            height: 100%;
             object-fit: fill;
             z-index: 1;
         }
 
-        /* Radio Ethics title above the image */
         .radio-ethics-title h2 {
             position: absolute;
             top: 50%;
@@ -108,7 +112,7 @@
             border-bottom: none;
         }
 
-        /* Other section headings */
+        /* General Section Headings */
         h2 {
             font-family: 'Comic Sans MS', cursive, sans-serif;
             line-height: 1.2;
@@ -119,7 +123,7 @@
         }
 
         .radio-ethics-title + p {
-            margin-top: 0 !important;
+            margin-top: 0;
         }
 
         p {
@@ -130,10 +134,28 @@
             margin-top: -10px;
         }
 
-        h2:first-of-type {
-            margin-top: 10px;
+        /* Radio Codes: Two Columns */
+        .radio-codes {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 24px;
+            row-gap: 8px;
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 30px;
         }
 
+        .radio-codes li {
+            min-width: 0;
+            padding: 7px 10px;
+            background: rgba(255, 255, 255, 0.45);
+            border-radius: 5px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        /* Information Tables */
         .info-table {
             width: 100%;
             border-collapse: collapse;
@@ -142,7 +164,7 @@
 
         .info-table td {
             padding: 12px 15px;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #e7e2cc;
         }
 
         .info-table td.label {
@@ -151,6 +173,7 @@
             width: 30%;
         }
 
+        /* Skills */
         .skills-list {
             list-style: none;
             padding: 0;
@@ -168,6 +191,7 @@
             font-weight: 500;
         }
 
+        /* Contact Links */
         .contact-links a {
             color: var(--accent-color);
             text-decoration: none;
@@ -180,6 +204,7 @@
             text-decoration: underline;
         }
 
+        /* Footer */
         footer {
             text-align: center;
             margin-top: 40px;
@@ -187,11 +212,19 @@
             color: #888;
         }
 
-        /* Responsive layout for mobile screens */
+        footer p {
+            margin-top: 0;
+        }
+
+        /* Responsive Design */
         @media (max-width: 480px) {
             .container {
                 margin: 15px auto;
                 padding: 12px;
+            }
+
+            header {
+                padding: 30px 15px;
             }
 
             header h1 {
@@ -199,19 +232,28 @@
             }
 
             .card {
-                padding: 20px;
+                padding: 20px 15px;
             }
 
             .radio-ethics-title {
+                width: 260px;
                 max-width: 100%;
-            }
-
-            .radio-ethics-title img {
-                max-width: 100%;
+                height: 90px;
+                margin-bottom: 25px;
             }
 
             .radio-ethics-title h2 {
                 font-size: 1.5rem;
+            }
+
+            /* One column on mobile */
+            .radio-codes {
+                grid-template-columns: 1fr;
+                row-gap: 6px;
+            }
+
+            .radio-codes li {
+                font-size: 0.9rem;
             }
 
             .info-table td {
@@ -234,7 +276,7 @@
         <!-- Main Content Card -->
         <div class="card">
 
-            <!-- Radio Ethics with Sticky Note Background -->
+            <!-- Radio Ethics with Rotated Sticky Note -->
             <div class="radio-ethics-title">
                 <img
                     src="sticky_notes.png"
@@ -243,43 +285,40 @@
                 <h2>Radio Ethics</h2>
             </div>
 
-            <!-- Radio Codes -->
-            <ul>
-                <li>10-1        : Perintah Berkumpul / Apel</li>
-                <li>10-2        : Lokasi</li>
-                <li>10-3        : Pesan Dibatalkan / Keluar Radio</li>
-                <li>10-4        : Dimengerti</li>
-                <li>10-5        : Perintah Berbicara / Bertemu Langsung</li>
-                <li>10-6        : Sedang Ada Kegiatan</li>
-                <li>10-7        : Kendaraan Rusak</li>
-                <li>10-8        : Menuju Ke Lokasi</li>
-                <li>10-9        : Minta Ulangi Pesan</li>
-                <li>10-10       : Peperangan Sedang Berlangsung</li>
-                <li>10-13       : Anggota Terlumpuhkan</li>
-                <li>10-18       : Perintah Mempercepat Kegiatan</li>
-                <li>10-23       : Tiba Di Lokasi</li>
-                <li>10-31A      : Perampokan Warung</li>
-                <li>10-31B      : Perampokan Jewel/li>
-                <li>10-31C      : Perampokan Bank</li>
-                <li>10-31F      : Penyanderaan</li>
-                <li>10-31L      : Perampokan Rumah</li>
-                <li>10-32       : Visual Senjata Illegal</li>
-                <li>10-38       : Traffic Stop</li>
+            <!-- Radio Codes: Two Columns -->
+            <ul class="radio-codes">
+                <li>10-1 : Perintah Berkumpul / Apel</li>
+                <li>10-2 : Lokasi</li>
+                <li>10-3 : Pesan Dibatalkan / Keluar Radio</li>
+                <li>10-4 : Dimengerti</li>
+                <li>10-5 : Perintah Berbicara / Bertemu Langsung</li>
+                <li>10-6 : Sedang Ada Kegiatan</li>
+                <li>10-7 : Kendaraan Rusak</li>
+                <li>10-8 : Menuju Ke Lokasi</li>
+                <li>10-9 : Minta Ulangi Pesan</li>
+                <li>10-10 : Peperangan Sedang Berlangsung</li>
+                <li>10-13 : Anggota Terlumpuhkan</li>
+                <li>10-18 : Perintah Mempercepat Kegiatan</li>
+                <li>10-23 : Tiba Di Lokasi</li>
+                <li>10-31A : Perampokan Warung</li>
+                <li>10-31B : Perampokan Jewel</li>
+                <li>10-31C : Perampokan Bank</li>
+                <li>10-31F : Penyanderaan</li>
+                <li>10-31L : Perampokan Rumah</li>
+                <li>10-32 : Visual Senjata Illegal</li>
+                <li>10-38 : Traffic Stop</li>
                 <li>10-50 Minor : Kecelakaan Ringan</li>
                 <li>10-50 Major : Kecelakaan Berat</li>
-                <li>10-52       : Membutuhkan Medis</li>
-                <li>10-57       : Terjadi Pengejaran</li>
-                <li>10-60       : Pencurian Kendaraan</li>
-                <li>10-71       : Terjadi Penembakan</li>
-                <li>10-77       : Permintaan Backup (Non-Emergency)</li>
-                <li>10-78       : Permintaan Backup (Emergency)</li>
-                <li>10-80       : Felony Stop</li>
-                <li>10-95       : Suspect Telah Diamankan</li>
-                <li>10-99       : Investigasi Area</li>
-                
+                <li>10-52 : Membutuhkan Medis</li>
+                <li>10-57 : Terjadi Pengejaran</li>
+                <li>10-60 : Pencurian Kendaraan</li>
+                <li>10-71 : Terjadi Penembakan</li>
+                <li>10-77 : Permintaan Backup (Non-Emergency)</li>
+                <li>10-78 : Permintaan Backup (Emergency)</li>
+                <li>10-80 : Felony Stop</li>
+                <li>10-95 : Suspect Telah Diamankan</li>
+                <li>10-99 : Investigasi Area</li>
             </ul>
-       
-            
 
             <!-- Personal Information -->
             <h2>Personal Information</h2>
