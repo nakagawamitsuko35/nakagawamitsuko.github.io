@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mitsuko's Field Sheet</title>
+
     <style>
         :root {
             --primary-color: #7d3804;
@@ -11,6 +13,10 @@
             --text-color: #333;
             --bg-color: #f4f7f6;
             --card-bg: #f7f1c6;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
@@ -30,11 +36,15 @@
 
         header {
             text-align: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(
+                135deg,
+                var(--primary-color),
+                var(--accent-color)
+            );
             color: white;
             padding: 40px 20px;
             border-radius: 10px 10px 0 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
@@ -44,7 +54,7 @@
         }
 
         header p {
-            margin: 10px 0 0 0;
+            margin: 10px 0 0;
             font-size: 1.1rem;
             opacity: 0.9;
         }
@@ -54,26 +64,67 @@
             padding: 30px;
             margin-top: -20px;
             border-radius: 0 0 10px 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
+        /* Sticky note container */
+        .radio-ethics-title {
+            position: relative;
+            width: 300px;
+            height: 100px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Sticky note image behind the title */
+        .radio-ethics-title img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100px;
+            object-fit: fill;
+            z-index: 1;
+        }
+
+        /* Radio Ethics title above the image */
+        .radio-ethics-title h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.8rem;
+            line-height: 1.2;
+            color: var(--text-color);
+            border-bottom: none;
+        }
+
+        /* Other section headings */
         h2 {
-            font-family: 'Comic Sans MS', Cursive, sans-serif;
-            line-height: 1;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            line-height: 1.2;
             color: var(--text-color);
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 8px;
             margin-top: 30px;
-            
+        }
+
+        .radio-ethics-title + p {
+            margin-top: 0 !important;
         }
 
         p {
             font-family: 'Lucida Console', Monaco, monospace;
-            line-height: 1;
+            line-height: 1.4;
             color: var(--text-color);
             padding-bottom: 8px;
-            margin-top: -10px !important;
-            
+            margin-top: -10px;
         }
 
         h2:first-of-type {
@@ -132,11 +183,45 @@
             font-size: 0.85rem;
             color: #888;
         }
+
+        /* Responsive layout for mobile screens */
+        @media (max-width: 480px) {
+            .container {
+                margin: 15px auto;
+                padding: 12px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .radio-ethics-title {
+                max-width: 100%;
+            }
+
+            .radio-ethics-title img {
+                max-width: 100%;
+            }
+
+            .radio-ethics-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .info-table td {
+                padding: 10px 8px;
+                overflow-wrap: anywhere;
+            }
+        }
     </style>
 </head>
-<body>
 
+<body>
     <div class="container">
+
         <!-- Header Section -->
         <header>
             <h1>Mitsuko-Field Notes</h1>
@@ -145,24 +230,32 @@
 
         <!-- Main Content Card -->
         <div class="card">
-            
-            <!-- About Me -->
-            <img src="—Pngtree—paper sticky note memo photocall_23212599.png"></img>
-            <h2>Radio Ethics</h2>
-            <p>10-1    : Perintah Berkumpul / Apel</p>
-            <p>10-2    : Lokasi</p>
-            <p>10-3    : Pesan Dibatalkan / Keluar Radio</p>
-            <p>10-4    : Dimengerti</p>
-            <p>10-5    : Perintah Berbicara / Bertemu Langsung</p>
-            <p>10-6    : Out of Service/Tied Up</p>
-            <p>10-7    : Vehicle Damage</p>
-            <p>10-8    : On My Way</p>
-            <p>10-9    : Repeat</p>
-            <p>10-10   : Fight in Progress</p>
-            <p>10-13   : Officer Down</p>
 
-            <!-- Personal Details -->
+            <!-- Radio Ethics with Sticky Note Background -->
+            <div class="radio-ethics-title">
+                <img
+                    src="—Pngtree—paper sticky note memo photocall_23212599.png"
+                    alt="Sticky note background"
+                >
+                <h2>Radio Ethics</h2>
+            </div>
+
+            <!-- Radio Codes -->
+            <p>10-1 : Perintah Berkumpul / Apel</p>
+            <p>10-2 : Lokasi</p>
+            <p>10-3 : Pesan Dibatalkan / Keluar Radio</p>
+            <p>10-4 : Dimengerti</p>
+            <p>10-5 : Perintah Berbicara / Bertemu Langsung</p>
+            <p>10-6 : Out of Service/Tied Up</p>
+            <p>10-7 : Vehicle Damage</p>
+            <p>10-8 : On My Way</p>
+            <p>10-9 : Repeat</p>
+            <p>10-10 : Fight in Progress</p>
+            <p>10-13 : Officer Down</p>
+
+            <!-- Personal Information -->
             <h2>Personal Information</h2>
+
             <table class="info-table">
                 <tr>
                     <td class="label">Full Name</td>
@@ -184,37 +277,59 @@
 
             <!-- Education -->
             <h2>Education</h2>
+
             <table class="info-table">
                 <tr>
                     <td class="label">2017 - 2021</td>
-                    <td><strong>B.S. in Computer Science</strong><br>State University</td>
+                    <td>
+                        <strong>B.S. in Computer Science</strong><br>
+                        State University
+                    </td>
                 </tr>
             </table>
 
             <!-- Skills -->
             <h2>Skills</h2>
+
             <ul class="skills-list">
-                <li>HTML5 & CSS3</li>
+                <li>HTML5 &amp; CSS3</li>
                 <li>JavaScript</li>
                 <li>React</li>
                 <li>Python</li>
-                <li>Git & GitHub</li>
+                <li>Git &amp; GitHub</li>
             </ul>
 
             <!-- Contact Information -->
             <h2>Contact Details</h2>
+
             <table class="info-table contact-links">
                 <tr>
                     <td class="label">Email</td>
-                    <td><a href="mailto:alex.morgan@example.com">alex.morgan@example.com</a></td>
+                    <td>
+                        <a href="mailto:alex.morgan@example.com">
+                            alex.morgan@example.com
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <td class="label">LinkedIn</td>
-                    <td><a href="https://linkedin.com" target="_blank">://linkedin.com</a></td>
+                    <td>
+                        <a
+                            href="https://linkedin.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >linkedin.com</a>
+                    </td>
                 </tr>
                 <tr>
                     <td class="label">GitHub</td>
-                    <td><a href="https://github.com" target="_blank">://github.com</a></td>
+                    <td>
+                        <a
+                            href="https://github.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >github.com</a>
+                    </td>
                 </tr>
             </table>
 
@@ -222,9 +337,9 @@
 
         <!-- Footer -->
         <footer>
-            <p>&copy; 2026 Alex Morgan. Built with clean HTML & CSS.</p>
+            <p>&copy; 2026 Alex Morgan. Built with clean HTML &amp; CSS.</p>
         </footer>
-    </div>
 
+    </div>
 </body>
 </html>
