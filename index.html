@@ -2,23 +2,206 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> Mitsuko - Catatan Dasar Lapangan</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
     <style>
-        h1 {
-            color: red;
+        :root {
+            --primary-color: #2b3a42;
+            --accent-color: #3f51b5;
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 40px 20px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin: 10px 0 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-top: -20px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+            margin-top: 30px;
+        }
+
+        h2:first-of-type {
+            margin-top: 10px;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .info-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-table td.label {
+            font-weight: bold;
+            color: #666;
+            width: 30%;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skills-list li {
+            background: #e8eaf6;
+            color: var(--accent-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .contact-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #888;
         }
     </style>
 </head>
-    
 <body>
-    <header>
-      <div>
-        <div class="title">Mitsuko - Catatan Dasar Lapangan</div>
-        <div class="subtitle">“Live as if you were to die tomorrow. Learn as if you were to live forever"</div>
-      </div>
-    </header>
-    <h1> Kode Radio</h1>
-    <h2> Miranda Rights</h2>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Alex Morgan</h1>
+            <p>Software Developer & Technology Enthusiast</p>
+        </header>
+
+        <!-- Main Content Card -->
+        <div class="card">
+            
+            <!-- About Me -->
+            <h2>About Me</h2>
+            <p>Hello! I am a passionate developer focused on building clean, user-friendly web applications. I love solving complex problems, learning new frameworks, and continuously improving my coding skills.</p>
+
+            <!-- Personal Details -->
+            <h2>Personal Information</h2>
+            <table class="info-table">
+                <tr>
+                    <td class="label">Full Name</td>
+                    <td>Alex Morgan</td>
+                </tr>
+                <tr>
+                    <td class="label">Date of Birth</td>
+                    <td>October 15, 1998</td>
+                </tr>
+                <tr>
+                    <td class="label">Gender</td>
+                    <td>Non-binary</td>
+                </tr>
+                <tr>
+                    <td class="label">Location</td>
+                    <td>San Francisco, CA</td>
+                </tr>
+            </table>
+
+            <!-- Education -->
+            <h2>Education</h2>
+            <table class="info-table">
+                <tr>
+                    <td class="label">2017 - 2021</td>
+                    <td><strong>B.S. in Computer Science</strong><br>State University</td>
+                </tr>
+            </table>
+
+            <!-- Skills -->
+            <h2>Skills</h2>
+            <ul class="skills-list">
+                <li>HTML5 & CSS3</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Python</li>
+                <li>Git & GitHub</li>
+            </ul>
+
+            <!-- Contact Information -->
+            <h2>Contact Details</h2>
+            <table class="info-table contact-links">
+                <tr>
+                    <td class="label">Email</td>
+                    <td><a href="mailto:alex.morgan@example.com">alex.morgan@example.com</a></td>
+                </tr>
+                <tr>
+                    <td class="label">LinkedIn</td>
+                    <td><a href="https://linkedin.com" target="_blank">://linkedin.com</a></td>
+                </tr>
+                <tr>
+                    <td class="label">GitHub</td>
+                    <td><a href="https://github.com" target="_blank">://github.com</a></td>
+                </tr>
+            </table>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Alex Morgan. Built with clean HTML & CSS.</p>
+        </footer>
+    </div>
+
 </body>
 </html>
